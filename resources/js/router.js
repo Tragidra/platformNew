@@ -1,9 +1,10 @@
 import vueRouter from 'vue-router';
 import Vue from 'vue';
 
+
 Vue.use(vueRouter);
 
-import Index from "./views/index";
+import Index from "./views/index/Index";
 import Profile from "./views/profile/Profile";
 import Login from "./views/auth/Login";
 import Courses from "./views/courses/Courses";
@@ -12,6 +13,7 @@ import Homeworks from "./views/homeworks/Homeworks";
 const routes = [
     {
         path: '/',
+        name: 'Index',
         component: Index
     },
     {
@@ -38,7 +40,8 @@ const router = new vueRouter({
 });
 
 router.beforeEach(( to, from, next) => {
-    const token = localStorage.getItem('x_xsrf_token')
+    let token = localStorage.getItem('x_xsrf_token')
+
     if(!token){
         if(to.path === '/login'){
             return next()
