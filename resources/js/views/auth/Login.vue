@@ -117,6 +117,8 @@
 </template>
 
 <script>
+
+import {mapActions} from 'vuex'
 export default {
     name: "Login",
     data(){
@@ -128,6 +130,9 @@ export default {
         }
     },
     methods:{
+        ...mapActions({
+            setUser: "auth/setUser"
+        }),
         login(){
             axios.get('/sanctum/csrf-cookie').then(response => {
                 axios.post('/login',{
@@ -135,11 +140,21 @@ export default {
                     password: this.password
                 }).then(res => {
                     localStorage.setItem('x_xsrf_token', res.config.headers['X-XSRF-TOKEN'])
-                    this.$router.go(0);
-                    this.$router.push('/');
+                    this.$store.commit('auth/SET_TOKEN', res.config.headers['X-XSRF-TOKEN'])
+                    // this.$router.go(0);
+                    // this.$router.push('/');
                 }).catch(err => {
                     console.log(err.response)
                 })
+
+                // this.setUser()
+                axios.get('api/user').then((resp) => {
+                    this.$store.commit('auth/SET_USER', resp.data)
+                })
+            })
+
+            this.$router.replace({
+                name: 'Index'
             })
         }
     }
