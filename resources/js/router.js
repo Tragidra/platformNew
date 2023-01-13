@@ -1,5 +1,6 @@
 import vueRouter from 'vue-router';
 import Vue from 'vue';
+import store from "./store";
 
 
 Vue.use(vueRouter);
@@ -40,7 +41,8 @@ const router = new vueRouter({
 });
 
 router.beforeEach(( to, from, next) => {
-    let token = localStorage.getItem('x_xsrf_token')
+
+    const token = localStorage.getItem('x_xsrf_token')
 
     if(!token){
         if(to.path === '/login'){

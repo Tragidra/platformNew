@@ -142,16 +142,13 @@ export default {
                 }).then(res => {
                     localStorage.setItem('x_xsrf_token', res.config.headers['X-XSRF-TOKEN'])
                     this.$store.commit('auth/SET_TOKEN', res.config.headers['X-XSRF-TOKEN'])
-                    // this.$router.go(0);
-                    // this.$router.push('/');
+                    this.$router.go(0);
+                    this.$router.push('/');
                 }).catch(err => {
                     console.log(err.response)
                 })
 
-                // this.setUser()
-                axios.get('api/user').then((resp) => {
-                    this.$store.commit('auth/SET_USER', resp.data)
-                })
+                this.setUser()
             })
 
             this.$router.replace({

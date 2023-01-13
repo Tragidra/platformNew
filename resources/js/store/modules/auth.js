@@ -23,6 +23,12 @@ export default {
         }
     },
 
+    computed: {
+        token: function () {
+            return this.state.token
+        }
+    },
+
     getters: {
         user(state) {
             return state.user
