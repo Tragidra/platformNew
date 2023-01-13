@@ -313,7 +313,10 @@
 
 <script>
 export default {
-    name: "Index"
+    name: "Index",
+    mounted() {
+        axios.get('/api/user').then(res => console.log(res));
+    }
 }
 </script>
 
