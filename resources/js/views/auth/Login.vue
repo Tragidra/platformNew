@@ -138,6 +138,7 @@ export default {
                 axios.post('/login',{
                     phone: this.phone,
                     password: this.password
+                    //comment
                 }).then(res => {
                     localStorage.setItem('x_xsrf_token', res.config.headers['X-XSRF-TOKEN'])
                     this.$store.commit('auth/SET_TOKEN', res.config.headers['X-XSRF-TOKEN'])
