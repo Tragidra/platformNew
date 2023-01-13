@@ -1,0 +1,17 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/functions.js": "/js/functions.js",
+    "/js/aos.js": "/js/aos.js",
+    "/js/apexcharts.min.js": "/js/apexcharts.min.js",
+    "/js/choices.min.js": "/js/choices.min.js",
+    "/js/glightbox.js": "/js/glightbox.js",
+    "/js/imagesloaded.js": "/js/imagesloaded.js",
+    "/js/isotope.pkgd.min.js": "/js/isotope.pkgd.min.js",
+    "/js/plyr.js": "/js/plyr.js",
+    "/js/purecounter_vanilla.js": "/js/purecounter_vanilla.js",
+    "/js/quill.min.js": "/js/quill.min.js",
+    "/js/bs-stepper.min.js": "/js/bs-stepper.min.js",
+    "/js/sticky.min.js": "/js/sticky.min.js",
+    "/js/tiny-slider.js": "/js/tiny-slider.js",
+    "/css/app.css": "/css/app.css"
+}
