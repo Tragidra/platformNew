@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-0">
+    <section v-if="authenticated" class="pt-0">
         <div class="container-fluid px-0">
             <div class="card bg-blue h-100px h-md-200px rounded-0" style="background:url(assets/images/pattern/04.png) no-repeat center center; background-size:cover;">
             </div>
@@ -63,17 +63,14 @@
 export default {
     name: "HeaderMain",
     data(){
-        return {
-            token: null
+        return{
+
         }
     },
-    methods:{
-        getToken(){
-            this.token = localStorage.getItem('x_xsrf_token')
+    computed:{
+        authenticated(){
+            return this.$store.getters["auth/authenticated"]
         }
-    },
-    mounted() {
-        this.getToken();
     }
 }
 </script>

@@ -314,9 +314,6 @@
 <script>
 export default {
     name: "Index",
-    mounted() {
-        axios.get('api/user')
-    }
 }
 </script>
 

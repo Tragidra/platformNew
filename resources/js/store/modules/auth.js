@@ -1,40 +1,44 @@
+import router from "../../router";
 export default {
     namespaced: true,
-
-    state: {
-        token: null,
-        user: null
+    state:{
+        authenticated:false,
+        user:{},
+        token: localStorage.getItem('x_xsrf_token') ?? ''
     },
-    actions: {
-        setUser(ctx) {
-            axios.get('/api/user').then((resp) => {
-                ctx.commit('SET_USER', resp.data)
-            })
-        }
-    },
-    mutations: {
-        SET_TOKEN(state, token) {
-            state.token = token
+    getters:{
+        authenticated(state){
+            return state.authenticated
         },
-
-        SET_USER(state, user) {
-            console.log(user)
-            state.user = user
-        }
-    },
-
-    computed: {
-        token: function () {
-            return this.state.token
-        }
-    },
-
-    getters: {
-        user(state) {
+        user(state){
             return state.user
+        }
+    },
+    mutations:{
+        SET_AUTHENTICATED (state, value) {
+            state.authenticated = value
         },
-        token(state) {
-            return state.token
+        SET_USER (state, value) {
+            state.user = value
+        },
+        SET_TOKEN (state, value) {
+            state.token = value
+        }
+    },
+    actions:{
+        login({commit}){
+            return axios.get('/api/user').then(({data})=>{
+                commit('SET_USER',data)
+                router.push('/');
+                commit('SET_AUTHENTICATED',true)
+            }).catch(({response:{data}})=>{
+                commit('SET_USER',{})
+                commit('SET_AUTHENTICATED',false)
+            })
+        },
+        logout({commit}){
+            commit('SET_USER',{})
+            commit('SET_AUTHENTICATED',false)
         }
     }
 }
