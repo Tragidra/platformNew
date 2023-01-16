@@ -1,6 +1,6 @@
 <template>
     <!-- Left sidebar START -->
-    <div class="col-xl-3">
+    <div v-if="authenticated" class="col-xl-3">
         <!-- Responsive offcanvas body START -->
         <div class="offcanvas-xl offcanvas-end" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
             <!-- Offcanvas header -->
@@ -38,13 +38,10 @@ export default {
     name: "Sidebar",
     data(){
         return {
-            token: null
+            //
         }
     },
     methods:{
-        getToken(){
-            this.token = localStorage.getItem('x_xsrf_token')
-        },
         logout(){
             axios.post('/logout')
                 .then(res => {
@@ -54,8 +51,10 @@ export default {
                 });
         }
     },
-    mounted() {
-        this.getToken();
+    computed:{
+        authenticated(){
+            return this.$store.getters["auth/authenticated"]
+        }
     }
 }
 </script>
