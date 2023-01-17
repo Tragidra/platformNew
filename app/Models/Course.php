@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Course extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'start_date',
+        'lessons_days',
+        'subject_id',
+        'default_teacher_id',
+    ];
 }

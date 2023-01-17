@@ -21,6 +21,8 @@ class CreateProfilesTable extends Migration
                 ->onDelete('cascade');
             $table->text('profile_image')->nullable();
             $table->text('about')->nullable();
+            $table->text('location')->nullable();
+            $table->text('education')->nullable();
             $table->integer('age')->nullable();
             $table->integer('easy_order_id')->nullable();
             $table->timestamps();
