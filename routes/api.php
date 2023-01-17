@@ -21,7 +21,7 @@ Route::group(['prefix' => '/test'], function (){
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/courses'], function (){
-    //
+    //TODO
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (){
