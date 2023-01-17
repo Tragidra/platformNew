@@ -1,6 +1,6 @@
 <template>
     <!-- Main content START -->
-    <div class="col-xl-9">
+    <div class="col-md-9">
 
         <!-- Course item START -->
         <div class="card border">

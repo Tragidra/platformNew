@@ -1,5 +1,5 @@
 <template>
-    <div class="col-xl-9">
+    <div class="col-md-9">
         <!-- Edit profile START -->
         <div class="card bg-transparent border rounded-3">
             <!-- Card header -->
