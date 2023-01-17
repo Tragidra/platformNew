@@ -71,6 +71,9 @@ export default {
         authenticated(){
             return this.$store.getters["auth/authenticated"]
         }
+    },
+    methods(){
+
     }
 }
 </script>
