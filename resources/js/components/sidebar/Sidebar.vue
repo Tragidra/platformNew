@@ -1,6 +1,6 @@
 <template>
     <!-- Left sidebar START -->
-    <div v-if="authenticated" class="col-xl-3">
+    <div class="col-md-3">
         <!-- Responsive offcanvas body START -->
         <div class="offcanvas-xl offcanvas-end" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
             <!-- Offcanvas header -->

@@ -1,11 +1,19 @@
 @extends('layouts.app')
 @section('content')
     <template>
-        <div class="flex-center position-ref full-height">
-            <div class="content">
+        <div id="app">
+            <main>
                 <header-main></header-main>
-                <router-view></router-view>
-            </div>
+                <section class="pt-0">
+                    <div class="container">
+                        <div class="row">
+                            <sidebar></sidebar>
+                            <router-view></router-view>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
         </div>
     </template>
 @endsection
