@@ -270,7 +270,7 @@ export default {
             if (!file) return;
             let data = new FormData();
             data.append('image', file);
-            axios.post("/api/profile/image", data, {
+            axios.post("/api/profile/getImage", data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
