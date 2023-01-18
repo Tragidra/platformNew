@@ -18,7 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', [\App\Http\Controllers\User\User
 
 Route::group(['prefix' => '/test'], function (){
     Route::post('/getCourse', [\App\Http\Controllers\Course\CourseCountroller::class, 'getMyCourses']);
-    Route::post('/getInfoForHeader', [\App\Http\Controllers\Header\HeaderController::class, 'index']);
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/courses'], function (){
@@ -26,6 +25,7 @@ Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/courses'], function (
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (){
+    Route::post('/getInfoForHeader', [\App\Http\Controllers\Header\HeaderController::class, 'index']);
     Route::post('/getImage', [\App\Http\Controllers\Profile\ProfileController::class, 'getImage']);
 });
 
