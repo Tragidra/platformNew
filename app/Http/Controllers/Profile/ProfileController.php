@@ -51,4 +51,11 @@ class ProfileController
             'status' => 'ok'
         ];
     }
+    public function getInfoProfile(Request $request){
+        $profile = Profile::find($request->input('id'));
+        return[
+            'profile' => $profile,
+            'status' => 'ok'
+        ];
+    }
 }

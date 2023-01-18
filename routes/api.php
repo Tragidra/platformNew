@@ -31,6 +31,7 @@ Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (
     Route::post('/uploadImage', [\App\Http\Controllers\Profile\ProfileController::class, 'uploadImage']); //загрузка фото
     Route::post('/deleteImage', [\App\Http\Controllers\Profile\ProfileController::class, 'deleteImage']); //удаление фотки, привязать на маленький крестик
     Route::post('/saveInfo', [\App\Http\Controllers\Profile\ProfileController::class, 'saveInfo']); //сохранение результатов изменения данных в профиле, привязать к кнопке сохранить мзменения
+    Route::post('/getProfile', [\App\Http\Controllers\Profile\ProfileController::class, 'getInfoProfile']); //подгрузка всех полей профиля
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/homeworks'], function (){

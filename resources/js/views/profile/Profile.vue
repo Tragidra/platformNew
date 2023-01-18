@@ -280,8 +280,7 @@ export default {
             });
         },
         loadAvatar(){
-
-            axios.post("/api/profile/getImage", {id:id})
+            axios.post("/api/profile/getImage", {id:user_id})
         },
     }
 }
