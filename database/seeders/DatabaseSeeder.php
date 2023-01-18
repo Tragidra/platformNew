@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Course;
 use App\Models\CourseUser;
+use App\Models\Profile;
 use App\Models\Role;
 use App\Models\Subject;
 use Database\Factories\RoleFactory;
@@ -31,6 +32,7 @@ class DatabaseSeeder extends Seeder
         );
          \App\Models\User::factory(30)->create();
          Course::factory(5)->create();
-         CourseUser::factory(16);
+         CourseUser::factory(16)->create();
+         Profile::factory(30)->create();
     }
 }

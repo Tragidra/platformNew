@@ -15,7 +15,7 @@ class SubjectFactory extends Factory
     {
         return [
             'name' => 'Python',
-            'subject_image' => 'public/storage/profile_images/artur.jpg'
+            'subject_image' => '/storage/subject_images/python.png'
         ];
     }
 }
