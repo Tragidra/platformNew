@@ -270,7 +270,7 @@ export default {
             if (!file) return;
             let data = new FormData();
             data.append('image', file);
-            axios.post("/api/profile/uploadImage", data, {
+            axios.post("/api/profile/getImage", data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -278,7 +278,11 @@ export default {
                 if (res.data.status === 'ok')
                     this.user.avatar = res.data.url;
             });
-        }
+        },
+        loadAvatar(){
+
+            axios.post("/api/profile/getImage", {id:id})
+        },
     }
 }
 </script>
