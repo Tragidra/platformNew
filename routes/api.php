@@ -35,6 +35,6 @@ Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/homeworks'], function (){
-    //
+
 });
 
