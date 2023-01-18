@@ -17,3 +17,8 @@ yarn-error.log
 /.vscode
 /public/fonts/bootstrap-icons.woff2?8d200481aa7f02a2d63a331fc782cfaf
 /public/fonts/bootstrap-icons.woff?8d200481aa7f02a2d63a331fc782cfaf
+.env.example
+package-lock.json
+public/mix-manifest.json
+.env.example
+composer.lock
