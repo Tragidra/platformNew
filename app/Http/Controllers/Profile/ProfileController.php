@@ -12,4 +12,8 @@ class ProfileController
         $pathImage = $profile->profile_image;
         return $pathImage;
     }
+    public function uploadImage(Request $request){
+        $profile = Profile::find($request->input('id'));
+        $pathImage = $profile->profile_image;
+    }
 }
