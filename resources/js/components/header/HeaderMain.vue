@@ -71,6 +71,7 @@ export default {
             return this.$store.getters["auth/authenticated"]
         },
         user(){
+            this.getInfo()
             return this.$store.getters["auth/user"]
         }
     },
@@ -86,9 +87,6 @@ export default {
             });
         }
     },
-    mounted() {
-        this.getInfo()
-    }
 }
 </script>
 
