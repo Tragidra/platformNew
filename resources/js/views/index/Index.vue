@@ -36,7 +36,7 @@
                         <div class="d-flex">
                             <h5 class="purecounter mb-0 fw-bold" data-purecounter-start="0" data-purecounter-end="8" data-purecounter-delay="300">0</h5>
                         </div>
-                        <p class="mb-0 h6 fw-light">Домашка</p>
+                        <p class="mb-0 h6 fw-light">Достижения</p>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
         <div class="card bg-transparent border rounded-3">
             <!-- Card header START -->
             <div class="card-header bg-transparent border-bottom">
-                <h3 class="mb-0">My Courses List</h3>
+                <h3 class="mb-0">Список моих курсов</h3>
             </div>
             <!-- Card header END -->
 
@@ -58,7 +58,7 @@
                     <!-- Content -->
                     <div class="col-md-8">
                         <form class="rounded position-relative">
-                            <input class="form-control pe-5 bg-transparent" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control pe-5 bg-transparent" type="search" placeholder="Поиск" aria-label="Search">
                             <button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
                                 <i class="fas fa-search fs-6 "></i>
                             </button>
@@ -70,7 +70,7 @@
                         <!-- Short by filter -->
                         <form>
                             <select class="form-select js-choice border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
-                                <option value="">Sort by</option>
+                                <option value="">Сортировка</option>
                                 <option>Free</option>
                                 <option>Newest</option>
                                 <option>Most popular</option>
@@ -87,10 +87,10 @@
                         <!-- Table head -->
                         <thead>
                         <tr>
-                            <th scope="col" class="border-0 rounded-start">Course Title</th>
-                            <th scope="col" class="border-0">Total Lectures</th>
-                            <th scope="col" class="border-0">Completed Lecture</th>
-                            <th scope="col" class="border-0 rounded-end">Action</th>
+                            <th scope="col" class="border-0 rounded-start">Название курс</th>
+                            <th scope="col" class="border-0">Всего уроков</th>
+                            <th scope="col" class="border-0">Завершенные уроки</th>
+                            <th scope="col" class="border-0 rounded-end">Действие</th>
                         </tr>
                         </thead>
 
