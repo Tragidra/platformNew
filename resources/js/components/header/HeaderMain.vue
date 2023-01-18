@@ -19,25 +19,25 @@
                             <!-- Profile info -->
                             <div class="col d-sm-flex justify-content-between align-items-center">
                                 <div>
-                                    <h1 class="my-1 fs-4">Lori Stevens</h1>
+                                    <h1 class="my-1 fs-4">Тимур Хасанов</h1>
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item me-3 mb-1 mb-sm-0">
                                             <span class="h6">255</span>
-                                            <span class="text-body fw-light">points</span>
+                                            <span class="text-body fw-light">Easycoins</span>
                                         </li>
                                         <li class="list-inline-item me-3 mb-1 mb-sm-0">
                                             <span class="h6">7</span>
-                                            <span class="text-body fw-light">Completed courses</span>
+                                            <span class="text-body fw-light">Пройдено курсов</span>
                                         </li>
                                         <li class="list-inline-item me-3 mb-1 mb-sm-0">
                                             <span class="h6">52</span>
-                                            <span class="text-body fw-light">Completed lessons</span>
+                                            <span class="text-body fw-light">Пройдено уроков</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <!-- Button -->
                                 <div class="mt-2 mt-sm-0">
-                                    <a href="student-course-list.html" class="btn btn-outline-primary mb-0">View my courses</a>
+                                    <a href="student-course-list.html" class="btn btn-outline-primary mb-0">Посмотреть мои курсы</a>
                                 </div>
                             </div>
                         </div>
