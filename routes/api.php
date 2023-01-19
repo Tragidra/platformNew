@@ -28,7 +28,6 @@ Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/courses'], function (
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (){
     Route::post('/getInfoForHeader', [\App\Http\Controllers\Header\HeaderController::class, 'index']);
-    Route::post('/getImage', [\App\Http\Controllers\Profile\ProfileController::class, 'getImage']);
     Route::post('/getImage', [\App\Http\Controllers\Profile\ProfileController::class, 'getImage']); //подгрузка фото при открытии траницы
     Route::post('/uploadImage', [\App\Http\Controllers\Profile\ProfileController::class, 'changeImage']); //загрузка фото
     Route::post('/deleteImage', [\App\Http\Controllers\Profile\ProfileController::class, 'deleteImage']); //удаление фотки, привязать на маленький крестик
