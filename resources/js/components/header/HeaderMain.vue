@@ -68,10 +68,10 @@ export default {
     },
     computed:{
         authenticated(){
+            this.getInfo()
             return this.$store.getters["auth/authenticated"]
         },
         user(){
-            this.getInfo()
             return this.$store.getters["auth/user"]
         }
     },

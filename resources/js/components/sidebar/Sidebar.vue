@@ -23,7 +23,7 @@
                         <router-link to="/profile"><a v-bind:class="{active : isActive.profile}" class="list-group-item"><i class="bi bi-pencil-square fa-fw me-2"></i>Редактировать профиль</a></router-link>
 <!--                        <a class="list-group-item" href="instructor-setting.html"><i class="bi bi-gear fa-fw me-2"></i>Settings</a>-->
 <!--                        <a class="list-group-item" href="instructor-delete-account.html"><i class="bi bi-trash fa-fw me-2"></i>Delete Profile</a>-->
-                        <a @click="logout" class="list-group-item text-danger bg-danger-soft-hover"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Выйти</a>
+                        <router-link to="/login"><a @click="logout" class="list-group-item text-danger bg-danger-soft-hover"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Выйти</a></router-link>
                     </div>
                 </div>
             </div>
@@ -48,11 +48,10 @@ export default {
             signOut: "auth/logout"
         }),
         logout(){
-            this.signOut()
             axios.post('/logout')
                 .then(res => {
                     localStorage.removeItem('x_xsrf_token')
-                    this.$router.push('/login')
+                    this.signOut()
                 });
         }
     },
