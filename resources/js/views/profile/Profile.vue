@@ -18,7 +18,7 @@
                             <label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
                                 <!-- Avatar place holder -->
                                 <span class="avatar avatar-xl">
-											<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/images/avatar/07.jpg" alt="">
+											<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" :src="avatar" alt="">
 										</span>
                                 <input @change="changeAvatar" id="file" name="file" type="file" accept="image/*">
                                 <!-- Remove btn -->
@@ -261,7 +261,7 @@
 export default {
     data(){
         return{
-
+            avatar: null
         }
     },
     methods:{
@@ -270,15 +270,33 @@ export default {
             if (!file) return;
             let data = new FormData();
             data.append('image', file);
-            axios.post("/api/profile/image", data, {
+            axios.post("/api/profile/uploadImage", data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             }).then(res => {
                 if (res.data.status === 'ok')
-                    this.user.avatar = res.data.url;
+                    this.avatar = res.data.url;
             });
-        }
+        },
+        get_Avatar(){
+
+            let data = {
+                id: this.$store.getters['auth/user'].id
+            }
+
+            axios.post("/api/profile/getImage",data).then(res => {
+                if (res.data.status === 'ok')
+                    this.avatar = res.data.path_to_image;
+            });
+        },
+        loadAvatar(){
+            axios.post("/api/profile/getImage", {id:user_id})
+        },
+    },
+    mounted() {
+        this.get_Avatar();
+        this.loadAvatar();
     }
 }
 </script>
