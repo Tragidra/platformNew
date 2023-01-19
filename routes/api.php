@@ -18,7 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', [\App\Http\Controllers\User\User
 
 Route::group(['prefix' => '/test'], function (){
     Route::post('/getCourse', [\App\Http\Controllers\Course\CourseCountroller::class, 'getMyCourses']);
-=======
     Route::post('/getInfoForHeader', [\App\Http\Controllers\Header\HeaderController::class, 'index']);
     Route::post('/test', [\App\Http\Controllers\Profile\ProfileController::class, 'uploadImage']);
 });
@@ -30,9 +29,8 @@ Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/courses'], function (
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (){
     Route::post('/getInfoForHeader', [\App\Http\Controllers\Header\HeaderController::class, 'index']);
     Route::post('/getImage', [\App\Http\Controllers\Profile\ProfileController::class, 'getImage']);
-=======
     Route::post('/getImage', [\App\Http\Controllers\Profile\ProfileController::class, 'getImage']); //подгрузка фото при открытии траницы
-    Route::post('/uploadImage', [\App\Http\Controllers\Profile\ProfileController::class, 'uploadImage']); //загрузка фото
+    Route::post('/uploadImage', [\App\Http\Controllers\Profile\ProfileController::class, 'changeImage']); //загрузка фото
     Route::post('/deleteImage', [\App\Http\Controllers\Profile\ProfileController::class, 'deleteImage']); //удаление фотки, привязать на маленький крестик
     Route::post('/saveInfo', [\App\Http\Controllers\Profile\ProfileController::class, 'saveInfo']); //сохранение результатов изменения данных в профиле, привязать к кнопке сохранить мзменения
     Route::post('/getProfile', [\App\Http\Controllers\Profile\ProfileController::class, 'getInfoProfile']); //подгрузка всех полей профиля

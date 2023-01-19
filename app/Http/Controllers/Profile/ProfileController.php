@@ -8,8 +8,39 @@ use Illuminate\Http\Request;
 
 class ProfileController
 {
+    private $nice_extenstions = [
+        'jpg', 'jpeg', 'png', 'gif'
+    ];
+
+    public function changeImage(Request $request){
+        $user = $request->user();
+        $file = $request->image;
+        $extension = $file->getClientOriginalExtension();
+        if (!in_array($extension, $this->nice_extenstions)) {
+            return [
+                'status' => 'error',
+                'message' => 'wrong file extension - ' . $extension
+            ];
+        }
+        $extension = ($extension == 'jpg' ? 'jpeg' : $extension);
+        $func_name = 'imagecreatefrom' . $extension;
+        $image = $func_name($file);
+        $size = min(imagesx($image), imagesy($image));
+        $image = imagecrop($image, ['x' => (imagesx($image) - $size) / 2, 'y' => (imagesy($image) - $size) / 2,
+            'width' => $size, 'height' => $size]);
+        ('image'.$extension)($image, fopen($file, 'w'));
+        $path = $file->store('profile_images');
+        $profile = Profile::where('user_id',$user->id)->first();
+        $profile->profile_image = "storage/".$path;
+        $profile->save();
+        return [
+            'status' => 'ok',
+            'url' => "storage/".$path
+        ];
+    }
+
     public function getImage(Request $request){
-        $profile = Profile::find($request->input('id'));
+        $profile = Profile::where('user_id', $request->input('id'))->first();
         $pathImage = $profile->profile_image;
         return[
             'path_to_image' => $pathImage,
@@ -17,7 +48,7 @@ class ProfileController
     }
 
     public function uploadImage(Request $request){
-        $profile = Profile::find($request->input('id'));
+        $profile = Profile::where('user_id', $request->input('id'))->first();
         $profile->profile_image = $request->input('path');
         $profile->save();
         return[
@@ -26,7 +57,7 @@ class ProfileController
     }
 
     public function deleteImage(Request $request){
-        $profile = Profile::find($request->input('id'));
+        $profile = Profile::where('user_id', $request->input('id'))->first();
         $profile->profile_image = null;
         $profile->save();
         return[
@@ -35,7 +66,7 @@ class ProfileController
     }
 
     public function saveInfo(Request $request){
-        $profile = Profile::find($request->input('id'));
+        $profile = Profile::where('user_id', $request->input('id'))->first();
         $user = User::find($request->input('id'));
         $request->input('name');
         if($request->input('name') !== null){
