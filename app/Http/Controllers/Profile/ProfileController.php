@@ -83,7 +83,7 @@ class ProfileController
         ];
     }
     public function getInfoProfile(Request $request){
-        $profile = Profile::find($request->input('id'));
+        $profile = Profile::where('user_id', $request->input('id'))->first();
         return[
             'profile' => $profile,
             'status' => 'ok'
