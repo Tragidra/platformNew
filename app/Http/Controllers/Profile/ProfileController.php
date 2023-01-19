@@ -33,7 +33,7 @@ class ProfileController
         $func_image($image, fopen($file, 'w'));
         $path = $file->store('profile_images');
         $profile = Profile::where('user_id',$user->id)->first();
-        $profile->profile_image = "storage/".$path;
+        $profile->profile_image = "/storage/".$path;
         $profile->save();
         return [
             'status' => 'ok',
@@ -63,16 +63,6 @@ class ProfileController
         return[
             'path_to_image' => $pathImage,
             'status' => 'ok'];
-    }
-
-    public function uploadImage(Request $request){
-        $user = $request->user();
-        $profile = Profile::where('user_id', $user->id)->first();
-        $profile->profile_image = $request->input('path');
-        $profile->save();
-        return[
-          'status' => 'ok'
-        ];
     }
 
     public function deleteImage(Request $request){
