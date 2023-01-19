@@ -25,44 +25,28 @@
                                 <button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
                             </label>
                             <!-- Upload button -->
-                            <label class="btn btn-primary-soft mb-0" for="uploadfile-1">Изменить</label>
-                            <input id="file" @change="changeAvatar" name="file" class="form-control d-none" type="file" accept="image/*">
+                            <label class="btn btn-primary-soft mb-0" @click="status_img = !status_img" for="uploadfile-1">Изменить</label>
+                            <input v-if="status_img = true" id="file" @change="changeAvatar" name="file" class="form-control d-none" type="file" accept="image/*">
                         </div>
                     </div>
 
                     <!-- Full name -->
-                    <div class="col-12">
-                        <label class="form-label">Full name</label>
+                    <div class="col-6">
+                        <label class="form-label">Имя и Фамилия</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" value="Lori" placeholder="First name">
-                            <input type="text" class="form-control" value="Stevens" placeholder="Last name">
+                            <input type="text" class="form-control" value="Тимур Хасанов" placeholder="First name">
                         </div>
-                    </div>
-
-                    <!-- Username -->
-                    <div class="col-md-6">
-                        <label class="form-label">Username</label>
-                        <div class="input-group">
-                            <span class="input-group-text">Eduport.com</span>
-                            <input type="text" class="form-control" value="loristev">
-                        </div>
-                    </div>
-
-                    <!-- Email id -->
-                    <div class="col-md-6">
-                        <label class="form-label">Email id</label>
-                        <input class="form-control" type="email" value="example@gmail.com"  placeholder="Email">
                     </div>
 
                     <!-- Phone number -->
                     <div class="col-md-6">
-                        <label class="form-label">Phone number</label>
+                        <label class="form-label">Номер телефона</label>
                         <input type="text" class="form-control" value="1234567890" placeholder="Phone number">
                     </div>
 
                     <!-- Location -->
                     <div class="col-md-6">
-                        <label class="form-label">Location</label>
+                        <label class="form-label">Город проживания</label>
                         <input class="form-control" type="text" value="California">
                     </div>
 
@@ -261,7 +245,8 @@
 export default {
     data(){
         return{
-            avatar: null
+            avatar: null,
+            status_img: false
         }
     },
     methods:{
