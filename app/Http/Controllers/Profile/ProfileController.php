@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Profile;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController
 {
@@ -12,7 +13,7 @@ class ProfileController
         'jpg', 'jpeg', 'png', 'gif'
     ];
 
-    public function changeImage(Request $request){
+    public function changeImage(Request $request){ //Будем скорее всего работать на сервере, на локалке не работает, причины этой фантасмагории мне неведомы
         $user = $request->user();
         $file = $request->image;
         $extension = $file->getClientOriginalExtension();
@@ -24,13 +25,12 @@ class ProfileController
         }
         $extension = ($extension == 'jpg' ? 'jpeg' : $extension);
         $func_name = 'imagecreatefrom' . $extension;
-        $func_local_save = 'image'.$extension;
+        $func_image = 'image' . $extension;
         $image = $func_name($file);
-        $func_local_save($image,(string)random_int(10,15));
         $size = min(imagesx($image), imagesy($image));
         $image = imagecrop($image, ['x' => (imagesx($image) - $size) / 2, 'y' => (imagesy($image) - $size) / 2,
             'width' => $size, 'height' => $size]);
-        ('image'.$extension)($image, fopen($file, 'w'));
+        $func_image($image, fopen($file, 'w'));
         $path = $file->store('profile_images');
         $profile = Profile::where('user_id',$user->id)->first();
         $profile->profile_image = "storage/".$path;
@@ -41,7 +41,22 @@ class ProfileController
         ];
     }
 
-    public function getImage(Request $request){
+//    public function changeImage(Request $request){
+//        $user = $request->user();
+//        $file = $request->image;
+//        $extension = $file->getClientOriginalExtension();
+//        if (!in_array($extension, $this->nice_extenstions)) {
+//            return [
+//                'status' => 'error',
+//                'message' => 'wrong file extension - ' . $extension
+//            ];
+//        }
+//        $filename = Storage::put('storage/profile_images', $file);
+//        return([
+//         'url' => 'да']);
+//    }
+
+        public function getImage(Request $request){
         $user = $request->user();
         $profile = Profile::where('user_id', $user->id)->first();
         $pathImage = $profile->profile_image;
