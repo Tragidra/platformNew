@@ -13,10 +13,10 @@
                 <div class="bg-dark border rounded-3 pb-0 p-3 w-100">
                     <!-- Dashboard menu -->
                     <div class="list-group list-group-dark list-group-borderless">
-                        <router-link to="/"><a v-bind:class="{active : isActive.home}" class="list-group-item"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Показатли</a></router-link>
+                        <router-link to="/"><a v-bind:class="{active : isActive.home}" class="list-group-item"><i class="bi bi-ui-checks-grid fa-fw me-2"></i>Показатели</a></router-link>
                         <router-link to="/courses"><a v-bind:class="{active : isActive.courses}" class="list-group-item"><i class="bi bi-card-checklist fa-fw me-2"></i>Мои курсы</a></router-link>
 <!--                        <a class="list-group-item" href="student-course-list.html"><i class="bi bi-basket fa-fw me-2"></i>My Courses</a>-->
-                        <router-link to="/homeworks"><a v-bind:class="{active : isActive.homeworks}" class="list-group-item"><i class="far fa-fw fa-file-alt me-2"></i>Домашнее задание</a></router-link>
+                        <router-link to="/homeworks"><a v-bind:class="{active : isActive.homeworks}" class="list-group-item"><i class="far fa-fw fa-file-alt me-2"></i>Домашние задания</a></router-link>
 <!--                        <a class="list-group-item" href="student-quiz.html"><i class="bi bi-question-diamond fa-fw me-2"></i>Quiz</a>-->
 <!--                        <a class="list-group-item" href="student-payment-info.html"><i class="bi bi-credit-card-2-front fa-fw me-2"></i>Payment info</a>-->
 <!--                        <a class="list-group-item" href="student-bookmark.html"><i class="bi bi-cart-check fa-fw me-2"></i>Wishlist</a>-->
