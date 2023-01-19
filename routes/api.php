@@ -40,6 +40,6 @@ Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/homeworks'], function
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/users'], function (){
-    Route::get('all', [\App\Http\Controllers\User\UserController::class, 'getUsersForState']);
+    Route::get('getAll', [\App\Http\Controllers\User\UserController::class, 'getUsersForState']);
 });
 

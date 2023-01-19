@@ -48,6 +48,7 @@
             <div class="card-header bg-transparent border-bottom">
                 <h3 class="mb-0">Список моих курсов</h3>
             </div>
+
             <!-- Card header END -->
 
             <!-- Card body START -->
@@ -304,8 +305,22 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
 export default {
     name: "Index",
+
+    methods: {
+        ...mapActions({
+            loadUsers: "users/loadUsers"
+        })
+    },
+
+    mounted() {
+        this.loadUsers()
+        console.log(this.$store.getters["users/getById"](13).name) // test
+        console.log(this.$store.getters["users/getByCourseId"](1)) // test
+        console.log(this.$store.getters["users/getRoleById"](1).name)
+    }
 }
 </script>
 
