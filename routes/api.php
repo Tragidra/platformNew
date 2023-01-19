@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', [\App\Http\Controllers\User\UserController::class, 'getUser']);
 
 Route::group(['prefix' => '/test'], function (){
-    Route::post('/getCourse', [\App\Http\Controllers\Course\CourseCountroller::class, 'getMyCourses']);
+
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/courses'], function (){
-    //
+    Route::post('/getCourse', [\App\Http\Controllers\Course\CourseCountroller::class, 'getMyCourses']);
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (){

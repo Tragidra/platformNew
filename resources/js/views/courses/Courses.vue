@@ -3,24 +3,25 @@
     <div class="col-md-9">
 
         <!-- Course item START -->
-        <div class="card border">
+        <div v-for="course in courses" class="card border">
             <div class="card-header border-bottom">
                 <!-- Card START -->
                 <div class="card">
                     <div class="row g-0">
                         <div class="col-md-3">
-                            <img src="assets/images/courses/4by3/01.jpg" class="rounded-2" alt="Card image">
+                            <img :src="course.subject_image" class="rounded-2" alt="Card image">
                         </div>
                         <div class="col-md-9">
                             <div class="card-body">
                                 <!-- Title -->
-                                <h3 class="card-title"><a href="#">The Complete Digital Marketing Course - 12 Courses in 1</a></h3>
+                                <h3 class="card-title"><a href="#">{{course.name}}</a></h3>
 
                                 <!-- Info -->
                                 <ul class="list-inline mb-2">
-                                    <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="far fa-clock text-danger me-2"></i>6h 56m</li>
+                                    <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="far fa-clock text-danger me-2"></i>{{course.start_date | moment}}</li>
                                     <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>82 lectures</li>
-                                    <li class="list-inline-item h6 fw-light"><i class="fas fa-signal text-success me-2"></i>Beginner</li>
+                                    <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-user-graduate text-blue me-2"></i>teacher</li>
+                                    <li class="list-inline-item h6 fw-light"><i class="fas fa-signal text-success me-2"></i>{{course.subject_name}}</li>
                                 </ul>
 
                                 <!-- button -->
@@ -517,8 +518,30 @@
 </template>
 
 <script>
+import moment from 'moment'
 export default {
-    name: "Courses"
+    name: "Courses",
+    data(){
+        return {
+            courses: null
+        }
+    },
+    methods:{
+        getMyCourses(){
+            axios.post('api/courses/getCourse').then(res =>{
+                this.courses = res.data.courses
+            });
+        }
+    },
+    filters: {
+        moment: function (date) {
+            moment.lang('ru');
+            return moment(date).format('lll');
+        }
+    },
+    mounted() {
+        this.getMyCourses()
+    }
 }
 </script>
 

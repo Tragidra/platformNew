@@ -34,6 +34,7 @@ import axios from "axios";
 import store from "./store";
 import Vuetify from './plugins/vuetify'
 import VueMoment from 'vue-moment'
+import moment from 'moment'
 import VueGoodTablePlugin from 'vue-good-table';
 Vue.use(VueMoment)
 Vue.use(VueGoodTablePlugin)
@@ -43,5 +44,6 @@ const app = new Vue({
     vuetify: Vuetify,
     router,
     axios,
-    store
+    store,
+    moment: moment
 });
