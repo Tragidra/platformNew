@@ -18,6 +18,7 @@ class CreateCourseUsersTable extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('course_id');
+            $table->boolean('completed')->default(False);
 
             $table->index('user_id', 'user_course_user_idx');
             $table->index('course_id', 'user_course_course_idx');

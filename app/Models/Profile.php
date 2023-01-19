@@ -9,4 +9,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Profile extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'profile_image',
+        'about',
+        'location',
+        'education',
+        'age'
+    ];
 }

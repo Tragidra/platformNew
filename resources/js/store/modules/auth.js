@@ -29,16 +29,18 @@ export default {
         login({commit}){
             return axios.get('/api/user').then(({data})=>{
                 commit('SET_USER',data)
-                router.push('/');
                 commit('SET_AUTHENTICATED',true)
+                router.push('/');
             }).catch(({response:{data}})=>{
                 commit('SET_USER',{})
                 commit('SET_AUTHENTICATED',false)
             })
         },
         logout({commit}){
+            commit('SET_TOKEN','')
             commit('SET_USER',{})
             commit('SET_AUTHENTICATED',false)
+            router.push('/login');
         }
     }
 }

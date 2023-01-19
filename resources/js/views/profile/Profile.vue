@@ -1,10 +1,10 @@
 <template>
-    <div class="col-xl-9">
+    <div class="col-md-9">
         <!-- Edit profile START -->
         <div class="card bg-transparent border rounded-3">
             <!-- Card header -->
             <div class="card-header bg-transparent border-bottom">
-                <h3 class="card-header-title mb-0">Edit Profile</h3>
+                <h3 class="card-header-title mb-0">Профиль</h3>
             </div>
             <!-- Card body START -->
             <div class="card-body">
@@ -13,19 +13,20 @@
 
                     <!-- Profile picture -->
                     <div class="col-12 justify-content-center align-items-center">
-                        <label class="form-label">Profile picture</label>
+                        <label class="form-label">Аватарка</label>
                         <div class="d-flex align-items-center">
                             <label class="position-relative me-4" for="uploadfile-1" title="Replace this pic">
                                 <!-- Avatar place holder -->
                                 <span class="avatar avatar-xl">
 											<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/images/avatar/07.jpg" alt="">
 										</span>
+                                <input @change="changeAvatar" id="file" name="file" type="file" accept="image/*">
                                 <!-- Remove btn -->
                                 <button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
                             </label>
                             <!-- Upload button -->
-                            <label class="btn btn-primary-soft mb-0" for="uploadfile-1">Change</label>
-                            <input id="uploadfile-1" class="form-control d-none" type="file">
+                            <label class="btn btn-primary-soft mb-0" for="uploadfile-1">Изменить</label>
+                            <input id="file" @change="changeAvatar" name="file" class="form-control d-none" type="file" accept="image/*">
                         </div>
                     </div>
 
@@ -258,7 +259,27 @@
 
 <script>
 export default {
-    name: "Profile"
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+        changeAvatar(){
+            let file = document.getElementById('file').files[0];
+            if (!file) return;
+            let data = new FormData();
+            data.append('image', file);
+            axios.post("/api/profile/image", data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(res => {
+                if (res.data.status === 'ok')
+                    this.user.avatar = res.data.url;
+            });
+        }
+    }
 }
 </script>
 

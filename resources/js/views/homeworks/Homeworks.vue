@@ -1,6 +1,6 @@
 <template>
     <!-- Main content START -->
-    <div class="col-xl-9">
+    <div class="col-md-9">
         <!-- Student review START -->
         <div class="card border bg-transparent rounded-3">
             <!-- Header START -->

@@ -25,7 +25,8 @@ Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/courses'], function (
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (){
-    //TODO
+    Route::post('/getInfoForHeader', [\App\Http\Controllers\Header\HeaderController::class, 'index']);
+    Route::post('/getImage', [\App\Http\Controllers\Profile\ProfileController::class, 'getImage']);
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/homeworks'], function (){

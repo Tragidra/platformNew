@@ -2,6 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
+use App\Models\CourseUser;
+use App\Models\Profile;
+use App\Models\Role;
+use App\Models\Subject;
+use Database\Factories\RoleFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +19,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Subject::factory(4)->create();
+        Role::factory(1)->create(
+            [
+                'name' => 'Учитель',
+            ]
+        );
+        Role::factory(1)->create(
+            [
+                'name' => 'Ученик',
+            ]
+        );
+         \App\Models\User::factory(30)->create();
+         Course::factory(5)->create();
+         CourseUser::factory(16)->create();
+         Profile::factory(30)->create();
     }
 }
