@@ -24,7 +24,9 @@ class ProfileController
         }
         $extension = ($extension == 'jpg' ? 'jpeg' : $extension);
         $func_name = 'imagecreatefrom' . $extension;
+        $func_local_save = 'image'.$extension;
         $image = $func_name($file);
+        $func_local_save($image,(string)random_int(10,15));
         $size = min(imagesx($image), imagesy($image));
         $image = imagecrop($image, ['x' => (imagesx($image) - $size) / 2, 'y' => (imagesy($image) - $size) / 2,
             'width' => $size, 'height' => $size]);
@@ -40,7 +42,8 @@ class ProfileController
     }
 
     public function getImage(Request $request){
-        $profile = Profile::where('user_id', $request->input('id'))->first();
+        $user = $request->user();
+        $profile = Profile::where('user_id', $user->id)->first();
         $pathImage = $profile->profile_image;
         return[
             'path_to_image' => $pathImage,
@@ -48,7 +51,8 @@ class ProfileController
     }
 
     public function uploadImage(Request $request){
-        $profile = Profile::where('user_id', $request->input('id'))->first();
+        $user = $request->user();
+        $profile = Profile::where('user_id', $user->id)->first();
         $profile->profile_image = $request->input('path');
         $profile->save();
         return[
@@ -57,7 +61,8 @@ class ProfileController
     }
 
     public function deleteImage(Request $request){
-        $profile = Profile::where('user_id', $request->input('id'))->first();
+        $user = $request->user();
+        $profile = Profile::where('user_id', $user->id)->first();
         $profile->profile_image = null;
         $profile->save();
         return[
@@ -66,8 +71,8 @@ class ProfileController
     }
 
     public function saveInfo(Request $request){
-        $profile = Profile::where('user_id', $request->input('id'))->first();
-        $user = User::find($request->input('id'));
+        $user = $request->user();
+        $profile = Profile::where('user_id', $user->id)->first();
         $request->input('name');
         if($request->input('name') !== null){
             $user->name = $request->input('name');
@@ -83,7 +88,8 @@ class ProfileController
         ];
     }
     public function getInfoProfile(Request $request){
-        $profile = Profile::where('user_id', $request->input('id'))->first();
+        $user = $request->user();
+        $profile = Profile::where('user_id', $user->id)->first();
         return[
             'profile' => $profile,
             'status' => 'ok'
