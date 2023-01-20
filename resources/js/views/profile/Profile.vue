@@ -55,7 +55,7 @@
                     <!-- Location -->
                     <div class="col-md-6">
                         <label class="form-label">Город</label>
-                        <input class="form-control" type="text" v-model="info.city" >
+                        <input class="form-control" type="text" v-model="info.location" >
                     </div>
 
                     <!-- Education -->
@@ -95,7 +95,7 @@ export default {
                 name: null,
                 phone: null,
                 age: null,
-                city: null,
+                location: null,
                 education: null,
                 about: null
             }
@@ -134,7 +134,7 @@ export default {
             });
         },
         getInfoProfile(){
-            axios.post("/api/profile/getInfoProfile").then(res => {
+            axios.post("/api/profile/getProfile").then(res => {
                 if (res.data.status === 'ok')
                     this.avatar = res.data.url;
             });
