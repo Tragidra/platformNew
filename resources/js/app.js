@@ -39,6 +39,7 @@ import VueGoodTablePlugin from 'vue-good-table';
 Vue.use(VueMoment)
 Vue.use(VueGoodTablePlugin)
 
+
 const app = new Vue({
     el: '#app',
     vuetify: Vuetify,
