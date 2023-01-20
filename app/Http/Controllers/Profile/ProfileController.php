@@ -106,6 +106,7 @@ class ProfileController
         $profile = Profile::where('user_id', $user->id)->first();
         return[
             'profile' => $profile,
+            'user' => $user,
             'status' => 'ok'
         ];
     }
