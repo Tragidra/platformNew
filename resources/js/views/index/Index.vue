@@ -317,8 +317,8 @@ export default {
 
     mounted() {
         this.loadUsers()
-        console.log(this.$store.getters["users/getById"](13).name) // test
-        console.log(this.$store.getters["users/getByCourseId"](1)) // test
+        console.log(this.$store.getters["users/getById"](30).name) // test
+        console.log(this.$store.getters["users/getByCourseId"](3)) // test
         console.log(this.$store.getters["users/getRoleById"](1).name)
     }
 }

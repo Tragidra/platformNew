@@ -536,7 +536,7 @@ export default {
     filters: {
         moment: function (date) {
             moment.lang('ru');
-            return moment(date).format('lll');
+            return moment(date).format('DD.MM.yyyy hh:mm:ss');
         }
     },
     mounted() {
