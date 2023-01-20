@@ -21,7 +21,7 @@
 											<img id="uploadfile-1-preview" class="avatar-img rounded-circle border border-white border-3 shadow" :src="avatar" alt="">
 										</span>
                                 <!-- Remove btn -->
-                                <button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
+                                <button type="button" @click="DeleteImage" class="uploadremove"><i class="bi bi-x text-white"></i></button>
 
                             </label>
                             <!-- Upload button -->
@@ -36,38 +36,38 @@
                     <div class="col-6">
                         <label class="form-label">Имя и Фамилия</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" v-model="info.name" >
+                            <input type="text" class="form-control" v-model="info.name" :placeholder="this.$store.getters['auth/user'].name">
                         </div>
                     </div>
 
                     <!-- Phone number -->
                     <div class="col-md-6">
                         <label class="form-label">Телефон</label>
-                        <input type="text" class="form-control" v-model="info.phone" >
+                        <input type="text" class="form-control" v-model="info.phone" :placeholder="profile.phone">
                     </div>
 
                     <!-- age -->
                     <div class="col-md-6">
                         <label class="form-label">Возраст</label>
-                        <input class="form-control" type="text" v-model="info.age" >
+                        <input class="form-control" type="text" v-model="info.age" :placeholder="profile.age">
                     </div>
 
                     <!-- Location -->
                     <div class="col-md-6">
                         <label class="form-label">Город</label>
-                        <input class="form-control" type="text" v-model="info.location" >
+                        <input class="form-control" type="text" v-model="info.location" :placeholder="profile.location">
                     </div>
 
                     <!-- Education -->
                     <div class="col-6">
                         <label class="form-label">Образование</label>
-                        <input class="form-control mb-2" type="text" v-model="info.education" >
+                        <input class="form-control mb-2" type="text" v-model="info.education" :placeholder="profile.education">
                     </div>
 
                     <!-- About me -->
                     <div class="col-6">
                         <label class="form-label">Обо мне</label>
-                        <textarea class="form-control" v-model="info.about" rows="3">{{ info.about }}</textarea>
+                        <textarea class="form-control" v-model="info.about" :placeholder="profile.about" rows="3"></textarea>
                         <div class="form-text">Какие у тебя увлечения?</div>
                     </div>
 
@@ -98,7 +98,8 @@ export default {
                 location: null,
                 education: null,
                 about: null
-            }
+            },
+            profile: null
         }
     },
     methods:{
@@ -136,7 +137,13 @@ export default {
         getInfoProfile(){
             axios.post("/api/profile/getProfile").then(res => {
                 if (res.data.status === 'ok')
-                    this.avatar = res.data.url;
+                    this.profile = res.data.profile;
+            });
+        },
+        DeleteImage(){
+            axios.post("/api/profile/deleteImage").then(res => {
+                if (res.data.status === 'ok')
+                    this.profile = res.data.profile;
             });
         }
     },
