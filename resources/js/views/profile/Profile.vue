@@ -36,38 +36,38 @@
                     <div class="col-6">
                         <label class="form-label">Имя и Фамилия</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" v-model="info.name" :placeholder="this.$store.getters['auth/user'].name">
+                            <input type="text" class="form-control" v-model="user.name">
                         </div>
                     </div>
 
                     <!-- Phone number -->
                     <div class="col-md-6">
                         <label class="form-label">Телефон</label>
-                        <input type="text" class="form-control" v-model="info.phone" :placeholder="profile.phone">
+                        <input type="text" class="form-control" v-model="user.phone">
                     </div>
 
                     <!-- age -->
                     <div class="col-md-6">
                         <label class="form-label">Возраст</label>
-                        <input class="form-control" type="text" v-model="info.age" :placeholder="profile.age">
+                        <input class="form-control" type="text" v-model="profile.age">
                     </div>
 
                     <!-- Location -->
                     <div class="col-md-6">
                         <label class="form-label">Город</label>
-                        <input class="form-control" type="text" v-model="info.location" :placeholder="profile.location">
+                        <input class="form-control" type="text" v-model="profile.location">
                     </div>
 
                     <!-- Education -->
                     <div class="col-6">
                         <label class="form-label">Образование</label>
-                        <input class="form-control mb-2" type="text" v-model="info.education" :placeholder="profile.education">
+                        <input class="form-control mb-2" type="text" v-model="profile.education">
                     </div>
 
                     <!-- About me -->
                     <div class="col-6">
                         <label class="form-label">Обо мне</label>
-                        <textarea class="form-control" v-model="info.about" :placeholder="profile.about" rows="3"></textarea>
+                        <textarea class="form-control" v-model="profile.about" rows="3"></textarea>
                         <div class="form-text">Какие у тебя увлечения?</div>
                     </div>
 
@@ -91,15 +91,8 @@ export default {
             avatar: null,
             status_file: false,
 
-            info: {
-                name: null,
-                phone: null,
-                age: null,
-                location: null,
-                education: null,
-                about: null
-            },
-            profile: null
+            profile: null,
+            user: null
         }
     },
     methods:{
@@ -129,7 +122,15 @@ export default {
             });
         },
         SaveInfo(){
-            axios.post("/api/profile/saveInfo", this.info).then(res => {
+            let info = {
+                name: this.user.name,
+                phone: this.user.phone,
+                age: this.profile.age,
+                location: this.profile.location,
+                education: this.profile.education,
+                about: this.profile.about
+            }
+            axios.post("/api/profile/saveInfo", info).then(res => {
                 if (res.data.status === 'ok')
                     this.avatar = res.data.url;
             });
@@ -138,6 +139,7 @@ export default {
             axios.post("/api/profile/getProfile").then(res => {
                 if (res.data.status === 'ok')
                     this.profile = res.data.profile;
+                    this.user = res.data.user
             });
         },
         DeleteImage(){
@@ -145,7 +147,7 @@ export default {
                 if (res.data.status === 'ok')
                     this.profile = res.data.profile;
             });
-        }
+        },
     },
     mounted() {
         this.get_Avatar();
