@@ -13,7 +13,7 @@ class ProfileController
         'jpg', 'jpeg', 'png', 'gif'
     ];
 
-    public function changeImage(Request $request){ //Будем скорее всего работать на сервере, на локалке не работает, причины этой фантасмагории мне неведомы
+    public function changeImage(Request $request){
         $user = $request->user();
         $file = $request->image;
         $extension = $file->getClientOriginalExtension();
@@ -68,16 +68,6 @@ class ProfileController
             'status' => 'ok'];
     }
 
-    public function uploadImage(Request $request){
-        $user = $request->user();
-        $profile = Profile::where('user_id', $user->id)->first();
-        $profile->profile_image = $request->input('path');
-        $profile->save();
-        return[
-          'status' => 'ok'
-        ];
-    }
-
     public function deleteImage(Request $request){
         $user = $request->user();
         $profile = Profile::where('user_id', $user->id)->first();
@@ -91,13 +81,24 @@ class ProfileController
     public function saveInfo(Request $request){
         $user = $request->user();
         $profile = Profile::where('user_id', $user->id)->first();
-        $request->input('name');
-        if($request->input('name') !== null){
-            $user->name = $request->input('name');
-        }   if($request->input('phone') !== null){
-            $user->phone = $request->input('phone');
-        }   if($request->input('about') !== null){
-            $profile->about = $request->input('about');
+        $name = $request->input('name');
+        $phone = $request->input('phone');
+        $about = $request->input('about');
+        $age = $request->input('age');
+        $location = $request->input('location');
+        $education = $request->input('education');
+        if($name !== null){
+            $user->name = $name;
+        }   if($phone !== null){
+            $user->phone = $phone;
+        }   if($about !== null){
+            $profile->about = $about;
+        }   if($education !== null){
+            $profile->education = $education;
+        }   if($age !== null){
+            $profile->age = $age;
+        }   if($location !== null){
+            $profile->location = $location;
         }
         $profile->save();
         $user->save();
@@ -110,6 +111,7 @@ class ProfileController
         $profile = Profile::where('user_id', $user->id)->first();
         return[
             'profile' => $profile,
+            'user' => $user,
             'status' => 'ok'
         ];
     }
