@@ -81,19 +81,19 @@ class ProfileController
     public function saveInfo(Request $request){
         $user = $request->user();
         $profile = Profile::where('user_id', $user->id)->first();
-        $request->input('name');
-        if($request->input('name') !== null){
-            $user->name = $request->input('name');
-        }   if($request->input('phone') !== null){
-            $user->phone = $request->input('phone');
-        }   if($request->input('about') !== null){
-            $profile->about = $request->input('about');
-        }   if($request->input('education') !== null){
-            $profile->about = $request->input('education');
-        }   if($request->input('age') !== null){
-            $profile->about = $request->input('age');
-        }   if($request->input('city') !== null){
-            $profile->about = $request->input('city');
+        $info = $request->input('info');
+        if($info->name !== null){
+            $user->name = $info->name;
+        }   if($info->phone !== null){
+            $user->phone = $info->phone;
+        }   if($info->about !== null){
+            $profile->about = $info->about;
+        }   if($info->education !== null){
+            $profile->education = $info->education;
+        }   if($info->education !== null){
+            $profile->age = $info->education;
+        }   if($info->location !== null){
+            $profile->location = $info->location;
         }
         $profile->save();
         $user->save();
