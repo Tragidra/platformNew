@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class CourseCountroller extends Controller
 {
     public function getMyCourses(Request $request){
-        $user = 6;
-        $coures = CourseUser::query()
+        $user = $request->user();
+        $courses = CourseUser::query()
+            ->select('courses.*', 'subjects.name as subject_name', 'subjects.subject_image')
             ->leftJoin('courses', 'courses.id', '=', 'course_users.course_id')
             ->leftJoin('subjects', 'courses.subject_id','=', 'subjects.id')
-            ->leftJoin('users', 'users.id', '=', 'courses.default_teacher_id')
-            ->where('course_users.user_id', '=', $user)
+            ->where('course_users.user_id', '=', $user->id)
             ->get();
 
-        return $coures;
+        return ['courses'=>$courses];
     }
 }

@@ -31,13 +31,17 @@ class ProfileController
         $image = imagecrop($image, ['x' => (imagesx($image) - $size) / 2, 'y' => (imagesy($image) - $size) / 2,
             'width' => $size, 'height' => $size]);
         $func_image($image, fopen($file, 'w'));
-        $path = $file->store('profile_images');
+//        Storage::put('public/profile_images', $image);
+        $path = $file->store('public/profile_images');
         $profile = Profile::where('user_id',$user->id)->first();
+        $path = "storage/".$path;
+        $path = str_replace('/public','', $path);
+        $profile->profile_image = $path;
         $profile->profile_image = "/storage/".$path;
         $profile->save();
         return [
             'status' => 'ok',
-            'url' => "storage/".$path
+            'url' => $path
         ];
     }
 

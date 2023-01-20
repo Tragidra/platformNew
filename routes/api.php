@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', [\App\Http\Controllers\User\UserController::class, 'getUser']);
 
 Route::group(['prefix' => '/test'], function (){
-    Route::post('/getCourse', [\App\Http\Controllers\Course\CourseCountroller::class, 'getMyCourses']);
-    Route::post('/getInfoForHeader', [\App\Http\Controllers\Header\HeaderController::class, 'index']);
-    Route::post('/test', [\App\Http\Controllers\Profile\ProfileController::class, 'getImage']);
+
 });
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/courses'], function (){
-    //
+    Route::post('/getCourse', [\App\Http\Controllers\Course\CourseCountroller::class, 'getMyCourses']);
+    Route::post('/getInfoForHeader', [\App\Http\Controllers\Header\HeaderController::class, 'index']);
 });
+
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (){
     Route::post('/getInfoForHeader', [\App\Http\Controllers\Header\HeaderController::class, 'index']);
@@ -37,5 +37,9 @@ Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/profile'], function (
 
 Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/homeworks'], function (){
 
+});
+
+Route::group(['middleware'=>'auth:sanctum',  'prefix' => '/users'], function (){
+    Route::get('getAll', [\App\Http\Controllers\User\UserController::class, 'getUsersForState']);
 });
 
