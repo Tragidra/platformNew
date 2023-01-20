@@ -86,14 +86,15 @@ class ProfileController
         $about = $request->input('about');
         $age = $request->input('age');
         $location = $request->input('location');
+        $education = $request->input('education');
         if($name !== null){
             $user->name = $name;
         }   if($phone !== null){
             $user->phone = $phone;
         }   if($about !== null){
             $profile->about = $about;
-        }   if($age !== null){
-            $profile->education = $age;
+        }   if($education !== null){
+            $profile->education = $education;
         }   if($age !== null){
             $profile->age = $age;
         }   if($location !== null){
