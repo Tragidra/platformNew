@@ -13,7 +13,7 @@ class ProfileController
         'jpg', 'jpeg', 'png', 'gif'
     ];
 
-    public function changeImage(Request $request){ //Будем скорее всего работать на сервере, на локалке не работает, причины этой фантасмагории мне неведомы
+    public function changeImage(Request $request){
         $user = $request->user();
         $file = $request->image;
         $extension = $file->getClientOriginalExtension();
@@ -37,7 +37,6 @@ class ProfileController
         $path = "storage/".$path;
         $path = str_replace('/public','', $path);
         $profile->profile_image = $path;
-        $profile->profile_image = "/storage/".$path;
         $profile->save();
         return [
             'status' => 'ok',
@@ -89,6 +88,12 @@ class ProfileController
             $user->phone = $request->input('phone');
         }   if($request->input('about') !== null){
             $profile->about = $request->input('about');
+        }   if($request->input('education') !== null){
+            $profile->about = $request->input('education');
+        }   if($request->input('age') !== null){
+            $profile->about = $request->input('age');
+        }   if($request->input('city') !== null){
+            $profile->about = $request->input('city');
         }
         $profile->save();
         $user->save();
