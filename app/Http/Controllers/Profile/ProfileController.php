@@ -37,6 +37,7 @@ class ProfileController
         $path = "storage/".$path;
         $path = str_replace('/public','', $path);
         $profile->profile_image = $path;
+        $profile->profile_image = "/storage/".$path;
         $profile->save();
         return [
             'status' => 'ok',
@@ -66,16 +67,6 @@ class ProfileController
         return[
             'path_to_image' => $pathImage,
             'status' => 'ok'];
-    }
-
-    public function uploadImage(Request $request){
-        $user = $request->user();
-        $profile = Profile::where('user_id', $user->id)->first();
-        $profile->profile_image = $request->input('path');
-        $profile->save();
-        return[
-          'status' => 'ok'
-        ];
     }
 
     public function deleteImage(Request $request){
