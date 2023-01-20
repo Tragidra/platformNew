@@ -18,14 +18,15 @@
 
                                 <!-- Info -->
                                 <ul class="list-inline mb-2">
-                                    <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="far fa-clock text-danger me-2"></i>{{course.start_date | moment}}</li>
-                                    <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>82 lectures</li>
+                                    <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-play-circle me-2"></i>{{course.start_date | momentStart}}</li>
+                                    <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="far fa-clock text-danger me-2"></i>{{course.start_date | momentTime}}</li>
+                                    <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>{{getDays(course.lessons_days)}}</li>
                                     <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-user-graduate text-blue me-2"></i>teacher</li>
                                     <li class="list-inline-item h6 fw-light"><i class="fas fa-signal text-success me-2"></i>{{course.subject_name}}</li>
                                 </ul>
 
                                 <!-- button -->
-                                <a href="#" class="btn btn-primary-soft btn-sm mb-0">Resume course</a>
+<!--                                <a href="#" class="btn btn-primary-soft btn-sm mb-0">Resume course</a>-->
                             </div>
                         </div>
                     </div>
@@ -41,7 +42,7 @@
                 <!-- Accordion START -->
                 <div class="accordion accordion-icon accordion-bg-light" id="accordionExample2">
                     <!-- Item -->
-                    <div class="accordion-item mb-3">
+                    <div  class="accordion-item mb-3">
                         <h6 class="accordion-header font-base" id="heading-1">
                             <a class="accordion-button fw-bold rounded collapsed d-block pe-4" href="#collapse-1" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
                                 <span class="mb-0">Introduction of Digital Marketing</span>
@@ -519,11 +520,12 @@
 
 <script>
 import moment from 'moment'
+import {getDayOfWeek} from "../../utils";
 export default {
     name: "Courses",
     data(){
         return {
-            courses: null
+            courses: null,
         }
     },
     methods:{
@@ -531,12 +533,19 @@ export default {
             axios.post('api/courses/getCourse').then(res =>{
                 this.courses = res.data.courses
             });
+        },
+        getDays(days){
+            return getDayOfWeek(days)
         }
     },
     filters: {
-        moment: function (date) {
+        momentStart: function (date) {
             moment.lang('ru');
-            return moment(date).format('lll');
+            return moment(date).format('DD.MM.yyyy');
+        },
+        momentTime: function (date) {
+            moment.lang('ru');
+            return moment(date).format('hh:mm');
         }
     },
     mounted() {

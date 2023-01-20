@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentHomeWorkFilesTable extends Migration
+class CreateLessonDescriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateStudentHomeWorkFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_home_work_files', function (Blueprint $table) {
+        Schema::create('lesson_descriptions', function (Blueprint $table) {
             $table->id();
             $table->text('file');
+            $table->string('file_type');
+            $table->text('comment');
 
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')
@@ -38,6 +40,6 @@ class CreateStudentHomeWorkFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_home_work_files');
+        Schema::dropIfExists('lesson_descriptions');
     }
 }
