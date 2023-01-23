@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class HomeworkController
 {
-    const TEACHER_ROLE = 1;
-    const STUDENT_ROLE = 2;
+    public const TEACHER_ROLE = 1;
+    public const STUDENT_ROLE = 2;
     public function index(Request $request)
     {
         $role = $request->user()['role_id'];

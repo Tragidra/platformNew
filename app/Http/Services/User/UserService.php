@@ -12,7 +12,7 @@ class UserService
     /** @var User $user - текущий пользователь */
     private $user;
 
-    const CONNECIONS_FIELDS = ['u.name', 'u.role_id', 'u.phone', 'p.profile_image',
+    public const CONNECIONS_FIELDS = ['u.name', 'u.role_id', 'u.phone', 'p.profile_image',
         'p.about', 'p.age', 'cu.course_id', 'u.id'];
 
     public function __construct(User $user)
