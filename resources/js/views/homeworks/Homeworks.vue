@@ -2,7 +2,7 @@
     <!-- Main content START -->
     <div class="col-md-9">
         <!-- Student review START -->
-        <div class="card border bg-transparent rounded-3">
+        <div class="card border bg-transparent rounded-3" v-if="$store.getters['auth/user'].role_id === 2">
             <!-- Header START -->
             <div class="card-header bg-transparent border-bottom">
                 <div class="row justify-content-between align-middle">
@@ -74,139 +74,6 @@
                 <hr>
                 <!-- Review item END -->
 
-                <!-- Review item START -->
-                <div class="d-sm-flex">
-                    <!-- Avatar image -->
-                    <img class="avatar avatar-lg rounded-circle float-start me-3" src="assets/images/avatar/03.jpg" alt="avatar">
-                    <div>
-                        <div class="mb-3 d-sm-flex justify-content-sm-between align-items-center">
-                            <!-- Title -->
-                            <div>
-                                <h5 class="m-0">Louis Ferguson</h5>
-                                <span class="me-3 small">June 18, 2021 at 11:55 am</span>
-                            </div>
-                            <!-- Review star -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-                            </ul>
-                        </div>
-                        <!-- Content -->
-                        <h6><span class="text-body fw-light">Review on:</span> How does an Angular application work?</h6>
-                        <p>Far advanced settling say finished raillery. Offered chiefly farther Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. </p>
-                        <!-- Button -->
-                        <div class="text-end">
-                            <a href="#" class="btn btn-sm btn-primary-soft mb-0">Direct message</a>
-                            <a href="#" class="btn btn-sm btn-light mb-0">Reply</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Divider -->
-                <hr>
-                <!-- Review item END -->
-
-                <!-- Review item START -->
-                <div class="d-sm-flex">
-                    <!-- Avatar image -->
-                    <img class="avatar avatar-lg rounded-circle float-start me-3" src="assets/images/avatar/05.jpg" alt="avatar">
-                    <div>
-                        <div class="mb-3 d-sm-flex justify-content-sm-between align-items-center">
-                            <!-- Title -->
-                            <div>
-                                <h5 class="m-0">Carolyn Ortiz</h5>
-                                <span class="me-3 small">August 28, 2021 at 3:08 pm</span>
-                            </div>
-                            <!-- Review star -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-                            </ul>
-                        </div>
-                        <!-- Content -->
-                        <h6><span class="text-body fw-light">Review on:</span> What is Flexbox and describe any elaborate on its most used properties??</h6>
-                        <p>Offered chiefly farther Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. </p>
-                        <!-- Button -->
-                        <div class="text-end">
-                            <a href="#" class="btn btn-sm btn-primary-soft mb-0">Direct message</a>
-                            <a href="#" class="btn btn-sm btn-light mb-0">Reply</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Divider -->
-                <hr>
-                <!-- Review item END -->
-
-                <!-- Review item START -->
-                <div class="d-sm-flex">
-                    <!-- Avatar image -->
-                    <img class="avatar avatar-lg rounded-circle float-start me-3" src="assets/images/avatar/08.jpg" alt="avatar">
-                    <div>
-                        <div class="mb-3 d-sm-flex justify-content-sm-between align-items-center">
-                            <!-- Title -->
-                            <div>
-                                <h5 class="m-0">Dennis Barrett</h5>
-                                <span class="me-3 small">August 29, 2021 at 5:35 pm</span>
-                            </div>
-                            <!-- Review star -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-                            </ul>
-                        </div>
-                        <!-- Content -->
-                        <h6><span class="text-body fw-light">Review on:</span> What are the different data types present in javascript?</h6>
-                        <p>Chiefly farther Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. </p>
-                        <!-- Button -->
-                        <div class="text-end">
-                            <a href="#" class="btn btn-sm btn-primary-soft mb-0">Direct message</a>
-                            <a href="#" class="btn btn-sm btn-light mb-0">Reply</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Divider -->
-                <hr>
-                <!-- Review item END -->
-
-                <!-- Review item START -->
-                <div class="d-sm-flex">
-                    <!-- Avatar image -->
-                    <img class="avatar avatar-lg rounded-circle float-start me-3" src="assets/images/avatar/09.jpg" alt="avatar">
-                    <div>
-                        <div class="mb-3 d-sm-flex justify-content-sm-between align-items-center">
-                            <!-- Title -->
-                            <div>
-                                <h5 class="m-0">Carolyn Ortiz</h5>
-                                <span class="me-3 small">September 15, 2021 at 8:28 am</span>
-                            </div>
-                            <!-- Review star -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-                                <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-                            </ul>
-                        </div>
-                        <!-- Content -->
-                        <h6><span class="text-body fw-light">Review on:</span> What are object prototypes?</h6>
-                        <p>Chiefly farther Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do. </p>
-                        <!-- Button -->
-                        <div class="text-end">
-                            <a href="#" class="btn btn-sm btn-primary-soft mb-0">Direct message</a>
-                            <a href="#" class="btn btn-sm btn-light mb-0">Reply</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Review item END -->
             </div>
             <!-- Reviews END -->
 
@@ -229,14 +96,60 @@
                 <!-- Pagination END -->
             </div>
         </div>
-        <!-- Student review END -->
+         Student review END
+
+
+
+        <!-- Card item START -->
+        <div class="col-lg-10 col-xxl-6" v-if="$store.getters['auth/user'].role_id === 1">
+            <div class="card rounded overflow-hidden shadow">
+                <div class="row g-0">
+                    <!-- Image -->
+                    <div class="col-md-4">
+                        <img src="assets/images/courses/4by3/01.jpg" alt="card image">
+                    </div>
+
+                    <!-- Card body -->
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <!-- Title -->
+                            <div class="d-flex justify-content-between mb-2">
+                                <h5 class="card-title mb-0"><a href="#">The Complete Digital Marketing Course - 12 Courses in 1</a></h5>
+                                <!-- Wishlist icon -->
+                                <a href="#"><i class="fas fa-heart text-danger"></i></a>
+                            </div>
+                            <!-- Content -->
+                            <!-- Info -->
+                            <ul class="list-inline mb-1">
+                                <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>82 lectures</li>
+                                <li class="list-inline-item h6 fw-light"><i class="fas fa-signal text-success me-2"></i>Senior</li>
+                            </ul>
+                            <!-- Rating -->
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="far fa-clock text-danger me-2"></i></li>
+                                <li class="list-inline-item me-0 small">Date start</li>
+                                <li class="list-inline-item me-0 small">2033-12-66</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Card item END -->
+
     </div>
     <!-- Main content END -->
 </template>
 
 <script>
 export default {
-    name: "Homeworks"
+    name: "Homeworks",
+
+    data() {
+        return {
+
+        }
+    },
 }
 </script>
 

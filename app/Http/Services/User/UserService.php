@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Services\User;
+namespace App\Http\Services\User;
 
 use App\Models\CourseUser;
 use App\Models\Role;
@@ -30,6 +30,7 @@ class UserService
         $connections = User::from('users AS u')
             ->leftJoin('course_users AS cu', 'u.id', '=', 'cu.user_id')
             ->leftJoin('profiles AS p', 'u.id', '=', 'p.user_id')
+            ->leftJoin('courses AS c', 'u.id', '=', 'c.default_teacher_id')
             ->whereIn('cu.course_id', $currentCourses)
             ->select(array_values(self::CONNECIONS_FIELDS))
             ->get();
