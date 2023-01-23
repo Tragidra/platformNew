@@ -143,8 +143,7 @@ export default {
                     localStorage.setItem('x_xsrf_token', res.config.headers['X-XSRF-TOKEN'])
                     this.signIn()
                     this.$store.commit('auth/SET_TOKEN', res.config.headers['X-XSRF-TOKEN'])
-                    // this.$router.go(0);
-                    // this.$router.push('/');
+                    this.$router.push('/');
                 }).catch(err => {
                     console.log(err.response)
                 })
